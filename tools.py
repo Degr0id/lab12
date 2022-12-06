@@ -3,14 +3,22 @@
 import tasks
 
 
-def output(txt):
+def output(txt):  # Вывод текста
     print("")
     for line in txt:
         print(line)
     print("")
 
 
-def max_len_calc(txt):
+def check_if_word(word):
+    if word.isalpha():
+        return True
+    elif word.count("-") == 1 and 0 < word.find("-") < len(word) - 1 and word.replace("-", "").isalpha():
+        return True
+    return False
+
+
+def max_len_calc(txt):  # Самая длинная строка
     max_l = 0
     for line in txt:
         max_l = max(max_l, len(line))
@@ -30,21 +38,30 @@ def menu(txt):
               "8) Вывести текст на экран.\n"
               "9) Очистить ввод\n"
               "0) Выход.")
-        user_input = input("--")
+        user_input = input("Ввод-->")
         if user_input == "1":
             tasks.task1(txt)
+            output(txt)
         elif user_input == "2":
             tasks.task2(txt)
+            output(txt)
         elif user_input == "3":
             tasks.task3(txt)
+            output(txt)
         elif user_input == "4":
             tasks.task4(txt)
+            #output(txt)
         elif user_input == "5":
             tasks.task5(txt)
+            #output(txt)
         elif user_input == "6":
             tasks.task6(txt)
+            output(txt)
         elif user_input == "7":
-            tasks.task7(txt)
+            res = tasks.task7(txt)
+            if res == 0:
+                print("")
+                output(txt)
         elif user_input == "8":
             output(txt)
         elif user_input == "9":
